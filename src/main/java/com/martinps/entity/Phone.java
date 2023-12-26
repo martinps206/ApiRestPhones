@@ -1,30 +1,31 @@
 package com.martinps.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Phone {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id_phone;
     private String number;
     private String cityCode;
     private String countryCode;
 
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
+    @JsonBackReference
     private User user;
 
-    public Long getId() {
-        return id;
+    public Long getId_phone() {
+        return id_phone;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_phone(Long id_phone) {
+        this.id_phone = id_phone;
     }
 
     public User getUser() {
@@ -58,4 +59,6 @@ public class Phone {
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
+
+
 }

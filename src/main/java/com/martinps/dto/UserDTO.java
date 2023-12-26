@@ -1,5 +1,7 @@
 package com.martinps.dto;
 
+import com.martinps.entity.Phone;
+
 import java.util.Set;
 
 public class UserDTO {
@@ -8,7 +10,7 @@ public class UserDTO {
     private String name;
     private String email;
     private String password;
-    private Set<PhoneDTO> phones;
+    private Set<Phone> phones;
 
 
     public String getId() {
@@ -18,7 +20,6 @@ public class UserDTO {
     public void setId(String id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -44,11 +45,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public Set<PhoneDTO> getPhones() {
+    public Set<Phone> getPhones() {
         return phones;
     }
 
-    public void setPhones(Set<PhoneDTO> phones) {
+    public void setPhones(Set<Phone> phones) {
         this.phones = phones;
     }
 

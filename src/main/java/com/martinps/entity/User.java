@@ -1,9 +1,7 @@
 package com.martinps.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,8 +16,8 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Phone> phones = new HashSet<>();
-
 
     public String getId() {
         return id;
@@ -59,5 +57,9 @@ public class User {
 
     public void setPhones(Set<Phone> phones) {
         this.phones = phones;
+        for (Phone p : phones) {
+            p.setUser(this);
+        }
     }
+
 }
